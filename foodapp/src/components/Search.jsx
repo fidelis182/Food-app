@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 const URL = "https://api.spoonacular.com/recipes/complexSearch";
 const API_KEY = "85bba1f5472e43498d1d6c685f838035";
-export default function Search() {
+export default function Search({ foodData, setFoodData }) {
   // capture input
   const [query, setQuery] = useState("pizza");
+
   // synatx of useEffect hook
   // to fetcth data from an external api
   useEffect(() => {
@@ -13,6 +14,7 @@ export default function Search() {
       // decode the jason data
       const data = await res.json();
       console.log(data.results);
+      setFoodData(data.results);
     }
     fetchFood();
   }, [query]);
