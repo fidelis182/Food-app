@@ -3,6 +3,7 @@ import Search from "./components/Search";
 import FoodList from "./components/FoodList";
 import Navbar from "./components/Navbar";
 import "./app.css";
+import Container from "./components/Container";
 
 function App() {
   const [foodData, setFoodData] = useState([]);
@@ -11,7 +12,9 @@ function App() {
       <Navbar />
       {/* passing our array as props */}
       <Search foodData={foodData} setFoodData={setFoodData} />
-      <FoodList foodData={foodData} />
+      <Container>
+        <FoodList foodData={foodData} />
+      </Container>
     </div>
   );
 }
