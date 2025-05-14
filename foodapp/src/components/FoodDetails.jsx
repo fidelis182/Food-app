@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "./Module/foodDetails.module.css";
+import ItemList from "./ItemList";
 
 export default function FoodDetails({ foodId }) {
   const [food, setFood] = useState({});
@@ -47,21 +48,7 @@ export default function FoodDetails({ foodId }) {
           </span>
         </div>
         <h2>Ingredients</h2>
-        {food?.extendedIngredients?.map((items) => (
-          <div>
-            <img
-              src={
-                `https://spoonacular.com/cdn/ingredients_100x100/` + items.image
-              }
-              alt=""
-            />
-            <h3>{items.name}</h3>
-            <h3>
-              {items.amount}
-              {items.unit}
-            </h3>
-          </div>
-        ))}
+        <ItemList food={food} isLoading={isLoading} />
         <h2>Instructions</h2>
         <div className={styles.recipeInstructions}>
           <ol>
